@@ -30,6 +30,62 @@ Quake-style drop-down, global hotkeys, “mouse-to-edge” reveal, colored theme
 * **Security:** Keychain-stored secrets, provider sandboxes, minimal scopes.
 * **Fast:** Rust core + GPU-accelerated renderer; zero-copy scrollback.
 
+### 🛠️ Built-in Tools & Functions
+
+#### **File Operations**
+* **File Management:** Copy, move, delete files and directories
+* **Search & Find:** Find files by name pattern, search text content across files
+* **Directory Operations:** List directories, get statistics, create folders
+* **File Content:** Read, write, create files with content management
+
+#### **Git Integration**
+* **Repository Status:** View staged/unstaged changes, branch information
+* **Branch Management:** Create, checkout, list branches (local & remote)
+* **Commit Operations:** Add files, commit changes, view commit history
+* **Diff Viewing:** See file changes, staged differences, commit comparisons
+* **Remote Operations:** Pull, push with upstream tracking
+
+#### **System Monitoring**
+* **Process Management:** List, monitor, kill processes by PID
+* **System Resources:** CPU usage, memory consumption, disk space
+* **Network Monitoring:** Interface status, active connections
+* **Performance Metrics:** Top processes by CPU/memory usage
+
+#### **Text Processing**
+* **Pattern Matching:** Grep with regex support, case-insensitive options
+* **Text Transformation:** Sort, sed replacements, awk field processing
+* **Text Analysis:** Word count, character counting, line operations
+* **Text Manipulation:** Case conversion, truncation, trimming, deduplication
+
+#### **Network Tools**
+* **Connectivity Testing:** Ping hosts, check reachability
+* **Port Scanning:** Scan open ports on remote hosts
+* **HTTP Operations:** Make web requests, download files
+* **DNS & Routing:** DNS lookups, traceroute network paths
+* **Network Discovery:** Find local IP addresses, network interfaces
+
+#### **Database Tools**
+* **Multi-Database Support:** PostgreSQL, MySQL, SQLite, MongoDB, Redis, SQL Server
+* **Connection Management:** Add, test, remove database connections
+* **Query Execution:** Run SQL queries, get structured results
+* **Schema Inspection:** View tables, columns, relationships, constraints
+* **Database Metadata:** Get database information, table statistics
+
+#### **Docker Integration**
+* **Container Management:** Start, stop, remove containers
+* **Image Operations:** List, pull, remove Docker images
+* **Volume & Network:** Manage Docker volumes and networks
+* **Docker Compose:** Up, down, status for compose projects
+* **System Monitoring:** Docker system info, resource usage
+* **Command Execution:** Run commands inside running containers
+
+#### **Package Management**
+* **Multi-Manager Support:** NPM, Yarn, PNPM, Pip, Cargo, Brew, Apt, Yum, Pacman
+* **Package Operations:** Install, uninstall, update packages
+* **Search & Discovery:** Find packages, get detailed information
+* **Project Management:** Initialize new projects with package managers
+* **Dependency Management:** Check outdated packages, manage dependencies
+
 ---
 
 ## Install
@@ -106,6 +162,133 @@ providers:
 
 ---
 
+## Tool Usage Examples
+
+### File Operations
+```bash
+# List directory contents
+file.list /path/to/directory --recursive
+
+# Search for files by pattern
+file.find . --pattern "*.rs" --case-sensitive
+
+# Search text content in files
+file.search . --query "TODO" --file-pattern "*.rs"
+
+# Copy files and directories
+file.copy source.txt destination.txt
+file.copy src/ dist/ --recursive
+```
+
+### Git Operations
+```bash
+# Check repository status
+git.status /path/to/repo
+
+# List all branches
+git.branches /path/to/repo
+
+# View commit history
+git.commits /path/to/repo --limit 10
+
+# See file differences
+git.diff /path/to/repo --file src/main.rs
+```
+
+### System Monitoring
+```bash
+# List running processes
+system.processes --limit 20
+
+# Check disk usage
+system.disk
+
+# Monitor network interfaces
+system.network
+
+# Get top CPU processes
+system.top-cpu --limit 10
+```
+
+### Text Processing
+```bash
+# Search for patterns
+text.grep "function" --files ["src/*.rs"] --case-insensitive
+
+# Sort text lines
+text.sort input.txt --numeric --reverse
+
+# Count words and lines
+text.wc document.txt
+
+# Transform text
+text.sed "old" "new" --global
+```
+
+### Network Tools
+```bash
+# Ping a host
+network.ping google.com --count 4
+
+# Scan ports
+network.scan 192.168.1.1 --ports [22,80,443]
+
+# Download files
+network.download https://example.com/file.zip ./file.zip
+
+# Check DNS
+network.dns-lookup google.com
+```
+
+### Database Operations
+```bash
+# Add database connection
+db.add-connection --type postgresql --host localhost --port 5432 --database mydb
+
+# Execute query
+db.query connection-id "SELECT * FROM users LIMIT 10"
+
+# List tables
+db.tables connection-id
+
+# Get table schema
+db.schema connection-id --table users
+```
+
+### Docker Management
+```bash
+# List containers
+docker.containers --all
+
+# Start/stop containers
+docker.start container-id
+docker.stop container-id
+
+# Pull images
+docker.pull nginx:latest
+
+# Run containers
+docker.run nginx:latest --detached --port 8080:80
+```
+
+### Package Management
+```bash
+# Check available package managers
+package.managers
+
+# Install packages
+package.install npm react --global
+package.install pip requests
+
+# List installed packages
+package.list npm --global
+
+# Search packages
+package.search npm "react component"
+```
+
+---
+
 ## AI Integration
 
 ```bash
@@ -137,11 +320,29 @@ export default defineCommand({
 
 ## Roadmap
 
+### ✅ Completed Features
+* **Comprehensive Tool Suite:** File operations, Git integration, system monitoring, text processing, network tools, database management, Docker integration, package management
+* **Multi-Database Support:** PostgreSQL, MySQL, SQLite, MongoDB, Redis, SQL Server
+* **Package Manager Integration:** NPM, Yarn, PNPM, Pip, Cargo, Brew, Apt, Yum, Pacman, Snap, Flatpak
+* **Advanced Text Processing:** Grep, sed, awk, sort, word count, text manipulation
+* **Network Diagnostics:** Ping, port scanning, HTTP requests, DNS lookup, traceroute
+* **Docker Management:** Container lifecycle, image operations, compose support
+* **System Monitoring:** Process management, resource monitoring, performance metrics
+
+### 🚧 In Development
 * Split-screen sessions, tmux integration
 * Global scratchpad with AI autosummarize
 * SSH jump-host profiles
 * Context bridges (git diff, file tree, clipboard)
+* Enhanced plugin system with hot-reloading
+
+### 📋 Planned Features
 * Brew + DMG releases, auto-updates
+* Advanced AI context awareness
+* Custom theme editor
+* Multi-workspace support
+* Performance profiling tools
+* Advanced debugging capabilities
 
 ---
 

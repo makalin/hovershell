@@ -1,0 +1,1 @@
+# HoverShell Resources

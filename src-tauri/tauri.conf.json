@@ -1,0 +1,134 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "HoverShell",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true,
+        "execute": true,
+        "sidecar": true,
+        "scope": [
+          {
+            "name": "hovershell-commands",
+            "cmd": "hovershell-*",
+            "args": true
+          }
+        ]
+      },
+      "window": {
+        "all": true,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true,
+        "print": true
+      },
+      "fs": {
+        "all": true,
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "copyFile": true,
+        "createDir": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true,
+        "exists": true,
+        "scope": [
+          "$HOME/.hovershell/**",
+          "$HOME/.config/hovershell/**",
+          "$HOME/Documents/**",
+          "$HOME/Desktop/**",
+          "$HOME/Downloads/**"
+        ]
+      },
+      "path": {
+        "all": true
+      },
+      "os": {
+        "all": true
+      },
+      "process": {
+        "all": true,
+        "relaunch": true,
+        "exit": true
+      },
+      "clipboard": {
+        "all": true,
+        "readText": true,
+        "writeText": true
+      },
+      "http": {
+        "all": true,
+        "request": true,
+        "scope": [
+          "https://api.openai.com/**",
+          "https://api.anthropic.com/**",
+          "https://api.cohere.ai/**",
+          "http://127.0.0.1:11434/**",
+          "http://localhost:11434/**"
+        ]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.makalin.hovershell",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "externalBin": [],
+      "copyright": "MIT © 2025 Mehmet T. AKALIN",
+      "category": "DeveloperTool",
+      "shortDescription": "macOS menu-bar terminal with AI integration",
+      "longDescription": "A macOS menu-bar terminal that's always on, edge-activated, fast, AI-aware, and plugin-extensible",
+      "macOS": {
+        "frameworks": [],
+        "minimumSystemVersion": "12.0",
+        "exceptionDomain": "",
+        "signingIdentity": null,
+        "providerShortName": null,
+        "entitlements": null
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "HoverShell",
+        "width": 800,
+        "height": 600,
+        "minWidth": 400,
+        "minHeight": 300,
+        "center": true,
+        "visible": false,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "transparent": true
+      }
+    ]
+  }
+}
